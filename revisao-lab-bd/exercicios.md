@@ -15,13 +15,13 @@
 
 ### **Exercício 06**
 #### **Para as questões a seguir, utilize o esquema “Homem x Mulher" abaixo:**
-![Alt text](image-1.png)  
+![Alt text](imagens/image-1.png)  
 
 - #### **6.1 Insira as seguintes tuplas na tabela “homem”**  
-![Alt text](image-2.png)  
+![Alt text](imagens/image-2.png)  
 
 - #### **6.2 Insira as seguintes tuplas na tabela “mulher”**  
-![Alt text](image-3.png)  
+![Alt text](imagens/image-3.png)  
 
 - #### **6.3 Todas as questões a seguir utilizarão INNER JOINS:**
     - *a. Selecionar os casamentos*  
@@ -43,7 +43,7 @@
 
 ### **Exercício 07**
 #### **OBSERVAÇÃO: Tendo como base o esquema de banco de dados relacional abaixo representado pela Figura 1, responda adequadamente as questões abaixo.**  
-![Alt text](image-4.png)  
+![Alt text](imagens/image-4.png)  
 
 - **7.1** *Elabore uma consulta para exibir o nome do empregado, sua respectiva descrição da função e a data de admissão dos empregados admitidos entre o período de 20 de fevereiro de 1987 e 1 de maio de 1989. Ordene a consulta resultante de modo ascendente de maneira posicional pela data de admissão.*  
 
