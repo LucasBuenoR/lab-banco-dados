@@ -136,7 +136,7 @@ FULL OUTER JOIN tb_mulher m ON h.id_mulher = m.id_mulher;
 /*
 EXERCÍCIO 07
 
-7.1. Elabore uma consulta para exibir o nome do empregado, sua respectiva 
+7.1 Elabore uma consulta para exibir o nome do empregado, sua respectiva 
 descrição da função e a data de admissão dos empregados admitidos entre o 
 período de 20 de fevereiro de 1987 e 1 de maio de 1989. Ordene a consulta 
 resultante de modo ascendente de maneira posicional pela data de admissão.
@@ -153,7 +153,7 @@ WHERE data_admissao >= '20/FEB/1987' AND data_admissao <= '01/MAY/1989'
 ORDER BY data_admissao ASC;
 
 /*
-7.2. Elabore uma consulta para exibir o nome do empregado com todas as letras em 
+7.2 Elabore uma consulta para exibir o nome do empregado com todas as letras em 
 maiúsculo, além do tamanho do sobrenome (quantidade de caracteres), nome do 
 departamento e nome do país, para todos os empregados cujo nome inicia-se 
 pelos caracteres B, L ou A. Forneça um label apropriado para cada coluna.
@@ -169,7 +169,7 @@ INNER JOIN tb_pais p         ON (l.id_pais = p.id_pais)
 WHERE e.nome LIKE 'B%' AND e.nome LIKE 'L%' OR e.nome LIKE 'A%';
 
 /*
-7.3. Elabore uma consulta para exibir o nome do empregado, o nome do departamento
+7.3 Elabore uma consulta para exibir o nome do empregado, o nome do departamento
 e sua respectiva localização (cidade e estado) de todos os empegados 
 que recebem comissão.
 */
@@ -179,10 +179,8 @@ INNER JOIN tb_departamento d USING (id_departamento)
 INNER JOIN tb_localizacao l USING (id_localizacao)
 WHERE percentual_comissao IS NOT NULL;
 
-
-
 /*
-7.4. Realize uma Auto Junção para recuperar o nome de cada empregado juntamente
+7.4 Realize uma Auto Junção para recuperar o nome de cada empregado juntamente
 com o nome de seu respectivo gerente. Exemplo: João trabalha para o Tiago. 
 Todos os empregados deverão ser recuperados, sem exceção. Para o empregado 
 que NÃO possuir gerente vinculado, utilize a função apropriada do Oracle para 
@@ -196,7 +194,7 @@ LEFT OUTER JOIN tb_empregado g ON (g.id_empregado = e.id_gerente)
 ORDER BY g.nome DESC;
 
 /*
-7.5. Elabore um procedimento armazenado utilizando a linguagem PL/SQL a qual
+7.5 Elabore um procedimento armazenado utilizando a linguagem PL/SQL a qual
 receberá 1 parâmetro do tipo inteiro, representando o id_empregado.
 Identifique esse stored procedure de sp_get_emp(p_id integer).
 O procedimento armazenado deverá retornar o nome completo,
@@ -234,3 +232,54 @@ create or replace PROCEDURE
             DBMS_OUTPUT.PUT_LINE ('Empregado ' || p_id_empregado || ' nao localizado!!!');
         END IF;       
 END sp_get_emp;
+
+--=================================================================================================
+
+--EXERCÍCIO 08
+--8.1
+SELECT sobrenome, id_departamento, salario FROM tb_empregado
+WHERE id_departamento IN (SELECT id_departamento
+                          FROM tb_empregado
+                          WHERE percentual_comissao IS NOT NULL)
+AND salario           IN (SELECT salario
+                          FROM tb_empregado
+                          WHERE percentual_comissao IS NOT NULL);
+
+SELECT * FROM tb_empregado;
+SELECT * FROM tb_departamento;
+
+--8.2
+SELECT e.sobrenome, d.nm_departamento, e.salario FROM tb_empregado e
+INNER JOIN tb_departamento d ON (e.id_departamento = d.id_departamento)
+WHERE e.salario IN 
+                  (SELECT e.salario
+                   FROM tb_empregado e
+                   HAVING d.id_localizacao = 1700)
+AND e.percentual_comissao IN (SELECT e.percentual_comissao
+                              FROM tb_empregado e
+                              HAVING d.id_localizacao = 1700);
+
+--8.3
+SELECT sobrenome, salario
+FROM tb_empregado
+WHERE salario =
+               (SELECT salario, percentual_comissao
+                FROM tb_empregado
+                WHERE sobrenome = 'Kochhar')
+                AND sobrenome <> 'Kochhar';
+
+--8.4
+SELECT e.id_empregado, e.sobrenome, e.id_departamento
+FROM tb_empregado e
+INNER JOIN tb_departamento d ON (e.id_departamento = d.id_departamento)
+INNER JOIN tb_localizacao l ON (d.id_localizacao = l.id_localizacao)
+WHERE l.cidade IN (SELECT l.cidade
+                   FROM tb_localizacao l
+                   WHERE l.cidade LIKE 'T%');
+
+--8.5
+SELECT id_empregado, nome, sobrenome
+FROM tb_empregado
+WHERE salario > ALL (SELECT salario
+                 FROM tb_empregado
+                 WHERE id_funcao = 'SA_MAN');
