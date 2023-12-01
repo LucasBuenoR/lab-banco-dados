@@ -15,13 +15,13 @@
 
 ### **Exercício 06**
 #### **Para as questões a seguir, utilize o esquema “Homem x Mulher" abaixo:**
-![Alt text](imagens/image-1.png)  
+![Alt text](../imagens/image-1.png)  
 
 - #### **6.1 Insira as seguintes tuplas na tabela “homem”**  
-![Alt text](imagens/image-2.png)  
+![Alt text](../imagens/image-2.png)  
 
 - #### **6.2 Insira as seguintes tuplas na tabela “mulher”**  
-![Alt text](imagens/image-3.png)  
+![Alt text](../imagens/image-3.png)  
 
 - #### **6.3 Todas as questões a seguir utilizarão INNER JOINS:**
     - *a. Selecionar os casamentos*  
@@ -43,7 +43,7 @@
 
 ### **Exercício 07**
 #### **OBSERVAÇÃO: Tendo como base o esquema de banco de dados relacional abaixo representado pela Figura 1, responda adequadamente as questões abaixo.**  
-![Alt text](imagens/image-4.png)  
+![Alt text](../imagens/image-4.png)  
 
 - **7.1** *Elabore uma consulta para exibir o nome do empregado, sua respectiva descrição da função e a data de admissão dos empregados admitidos entre o período de 20 de fevereiro de 1987 e 1 de maio de 1989. Ordene a consulta resultante de modo ascendente de maneira posicional pela data de admissão.*  
 
@@ -65,3 +65,12 @@
       ***END;***  
 
       *Saída do stored procedure: Empregado ***999*** não localizado!!!*
+
+### **Exercício 08**  
+#### **Exercícios de Subconsulta**  
+- **8.1** *Escreva uma consulta para exibir o sobrenome, id_departamento e salario de qualquer funcionário cujo id_departamento e salario correspondam ao id_departamento e salario de qualquer funcionário que receba uma comissão.*
+
+- **8.2** *Exibe o sobrenome, nm_departamento e salario de qualquer funcionário cujo salario e percentual_comissao correspondam ao salario e percentual_comissao de qualquer funcionário localizado na localidade ID 1700.*
+- **8.3** *Crie uma consulta para exibir o sobrenome e salário de todos os funcionários que possuem a percentual_comissão como Kochhar e mesmo salário Observação: não exiba Kochhar no conjunto de resultados.*
+- **8.4** *Exibir detalhes como id_empregado, sobrenome e id_departamento daqueles funcionários que moram em cidades cujos nomes começam com T.*
+- **8.5** *Crie uma consulta para exibir os funcionários que ganham um salário maior que o salário de todos os gerentes de vendas (ID_FUNCAO = 'SA_MAN'). Classifique os resultados em salario do maior para o menor.*
