@@ -1,4 +1,4 @@
-# **Revisão de Laboratório de Banco de Dados:floppy_disk:**
+# **Revisão de Laboratório de Banco de Dados :floppy_disk:**
 ### **:card_index_dividers:Arquivos**
 - **:open_file_folder:[revisao-lab-bd/exercicios/exercicios.md](revisao-lab-bd/exercicios/exercicios.md) - Exercícios para revisar.**
 - **:open_file_folder:[revisao-lab-bd/exercicios/respostas.sql](revisao-lab-bd/exercicios/respostas.sql) - Respostas dos exercícios.**
